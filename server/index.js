@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173", // Sesuaikan dengan alamat client Anda
+    origin: "https://vercel-deploy-client.vercel.app/", // Sesuaikan dengan alamat client Anda
   })
 );
 
