@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Import Axios
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    // Menggunakan Axios untuk melakukan permintaan GET ke server
+    axios.get("http://localhost:4000/test", { withCredentials: true })
+      .then((response) => {
+        setMessage(response.data.message);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:4000/test", { credentials: "include" })
+  //     .then((res) => res.json())
+  //     .then((data) => setMessage(data.message))
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="h-screen w-full flex items-center justify-center">
+      <h1 className="text-2xl">{message}</h1>
+    </div>
+  );
+};
 
-export default App
+export default App;
