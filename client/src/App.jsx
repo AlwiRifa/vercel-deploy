@@ -6,7 +6,7 @@ const App = () => {
 
   useEffect(() => {
     // Menggunakan Axios untuk melakukan permintaan GET ke server
-    axios.get("http://localhost:4000/test", { withCredentials: true })
+    axios.get("http://localhost:4000", { withCredentials: true })
       .then((response) => {
         setMessage(response.data.message);
       })

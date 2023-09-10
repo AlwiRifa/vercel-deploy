@@ -14,7 +14,7 @@ app.use(
 
 
 // Route
-app.get("/test", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello from server" });
 });
 
