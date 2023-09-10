@@ -6,7 +6,10 @@ const App = () => {
 
   useEffect(() => {
     // Menggunakan Axios untuk melakukan permintaan GET ke server
-    axios.get("https://vercel-deploy-server-mu.vercel.app", { withCredentials: true })
+    axios
+      .get("https://vercel-deploy-server-mu.vercel.app", {
+        withCredentials: true,
+      })
       .then((response) => {
         setMessage(response.data.message);
       })
@@ -21,7 +24,6 @@ const App = () => {
   //     .then((data) => setMessage(data.message))
   //     .catch((error) => console.error("Error fetching data:", error));
   // }, []);
-
 
   return (
     <div className="h-screen w-full flex items-center justify-center">
